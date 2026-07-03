@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Studio Écho Social | Gestion de contenu digital</title>
+  <meta name="description" content="Outil privé de préparation, organisation et gestion de contenu digital.">
+  <style>
+    :root {
+      --bg: #f7f6f4;
+      --card: #ffffff;
+      --text: #202124;
+      --muted: #60646c;
+      --accent: #b65345;
+      --border: #e6e2df;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .container {
+      width: min(1040px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    main {
+      padding: 84px 0 64px;
+    }
+
+    .hero {
+      max-width: 760px;
+      margin-bottom: 72px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 64px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin: 14px 0 24px;
+    }
+
+    h2 {
+      font-size: 30px;
+      letter-spacing: -0.8px;
+      margin: 0 0 24px;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 17px;
+      margin: 0 0 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 72px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 25px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .notice {
+      background: #fff;
+      border-left: 4px solid var(--accent);
+      padding: 25px;
+      border-radius: 8px;
+      margin-bottom: 64px;
+    }
+
+    .notice p:last-child {
+      margin-bottom: 0;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: #fff;
+      padding: 28px 0;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 720px) {
+      nav { align-items: flex-start; padding: 18px 0; flex-direction: column; }
+      .grid { grid-template-columns: 1fr; }
+      main { padding-top: 56px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Studio Écho Social</div>
+        <a href="privacy.html">Politique de confidentialité</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">Gestion de contenu digital</div>
+      <h1>Une organisation plus claire pour les contenus numériques.</h1>
+      <p>
+        Studio Écho Social est un outil privé de préparation, d’organisation
+        et de gestion manuelle de contenu digital destiné à son propriétaire.
+      </p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h3>Organisation</h3>
+        <p>Préparation des idées, contenus, visuels, titres, descriptions et liens.</p>
+      </article>
+
+      <article class="card">
+        <h3>Planification</h3>
+        <p>Structuration des publications et des priorités de communication.</p>
+      </article>
+
+      <article class="card">
+        <h3>Validation manuelle</h3>
+        <p>Chaque action de publication reste contrôlée et validée par le propriétaire.</p>
+      </article>
+    </section>
+
+    <section class="notice">
+      <h2>Utilisation responsable</h2>
+      <p>Le site ne propose aucun compte public, profil utilisateur, fil d’actualité, système de publication publique, commentaire, abonnement, messagerie ou fonctionnalité communautaire.</p>
+      <p>Il ne constitue pas un réseau social.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© 2026 Studio Écho Social</span>
+      <a href="privacy.html">Politique de confidentialité</a>
+    </div>
+  </footer>
+</body>
+</html>
