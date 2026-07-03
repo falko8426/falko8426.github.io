@@ -3,207 +3,662 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Studio Écho Social | Gestion de contenu digital</title>
-  <meta name="description" content="Outil privé de préparation, organisation et gestion de contenu digital.">
+
+  <title>Studio Écho Social | Organisation de contenu digital</title>
+  <meta name="description" content="Studio Écho Social est un outil privé dédié à l’organisation, la préparation et la gestion manuelle de contenu digital.">
+  <meta property="og:title" content="Studio Écho Social">
+  <meta property="og:description" content="Organisation, préparation et gestion manuelle de contenu digital.">
+  <meta property="og:type" content="website">
+
   <style>
     :root {
-      --bg: #f7f6f4;
-      --card: #ffffff;
+      --background: #f8f6f3;
+      --surface: #ffffff;
+      --surface-soft: #f1ece7;
       --text: #202124;
-      --muted: #60646c;
-      --accent: #b65345;
-      --border: #e6e2df;
+      --muted: #66625f;
+      --accent: #a95145;
+      --accent-dark: #873e35;
+      --border: #e3ddd7;
+      --shadow: 0 18px 45px rgba(44, 34, 29, 0.08);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
+      background: var(--background);
       color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
     }
 
-    header {
-      background: #ffffff;
-      border-bottom: 1px solid var(--border);
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     .container {
-      width: min(1040px, calc(100% - 40px));
-      margin: auto;
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
     }
 
-    nav {
-      min-height: 72px;
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(248, 246, 243, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(227, 221, 215, 0.8);
+    }
+
+    .navigation {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 17px;
+      font-weight: 750;
+      letter-spacing: -0.4px;
+    }
+
+    .brand-mark {
+      width: 37px;
+      height: 37px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--text);
+      color: white;
+      font-size: 22px;
+      font-weight: 800;
+      font-family: Georgia, serif;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #4d4946;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      padding: 104px 0 76px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 58px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      margin-bottom: 18px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 720px;
+      margin: 0 0 23px;
+      font-size: clamp(44px, 6vw, 76px);
+      line-height: 1.02;
+      letter-spacing: -3.2px;
+    }
+
+    .hero p {
+      max-width: 620px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 19px;
+      border-radius: 10px;
+      border: 1px solid var(--text);
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .button-primary {
+      background: var(--text);
+      color: white;
+    }
+
+    .button-primary:hover {
+      background: #38393b;
+    }
+
+    .button-secondary {
+      background: transparent;
+      color: var(--text);
+    }
+
+    .button-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-panel {
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .panel-top {
+      display: flex;
+      gap: 7px;
+      margin-bottom: 31px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #ded7d1;
+    }
+
+    .dot:first-child {
+      background: var(--accent);
+    }
+
+    .panel-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+    }
+
+    .panel-title {
+      margin: 8px 0 21px;
+      font-size: 27px;
+      line-height: 1.16;
+      letter-spacing: -1px;
+    }
+
+    .panel-line {
+      height: 11px;
+      margin: 12px 0;
+      border-radius: 999px;
+      background: var(--surface-soft);
+    }
+
+    .panel-line.short {
+      width: 68%;
+    }
+
+    .panel-status {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      color: #4f4b48;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #5d876a;
+    }
+
+    section {
+      padding: 76px 0;
+    }
+
+    .section-heading {
+      max-width: 700px;
+      margin-bottom: 34px;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 13px;
+      font-size: clamp(31px, 4vw, 46px);
+      line-height: 1.08;
+      letter-spacing: -1.7px;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card {
+      min-height: 230px;
+      padding: 27px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--surface);
+    }
+
+    .feature-number {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .feature-card h3 {
+      margin: 27px 0 10px;
+      font-size: 21px;
+      letter-spacing: -0.5px;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .workflow {
+      background: var(--text);
+      color: white;
+    }
+
+    .workflow .section-heading p {
+      color: #d8d5d2;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .step {
+      min-height: 205px;
+      padding: 24px;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .step-number {
+      color: #e39385;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .step h3 {
+      margin: 29px 0 9px;
+      font-size: 19px;
+    }
+
+    .step p {
+      margin: 0;
+      color: #d8d5d2;
+      font-size: 14px;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 46px;
+      align-items: start;
+    }
+
+    .trust-card {
+      padding: 30px;
+      border-left: 4px solid var(--accent);
+      border-radius: 10px;
+      background: var(--surface);
+      box-shadow: 0 9px 25px rgba(44, 34, 29, 0.05);
+    }
+
+    .trust-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .trust-list {
+      display: grid;
+      gap: 15px;
+    }
+
+    .trust-list div {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: #4e4a47;
+      font-size: 15px;
+    }
+
+    .check {
+      flex: 0 0 auto;
+      width: 20px;
+      height: 20px;
+      display: grid;
+      place-items: center;
+      margin-top: 2px;
+      border-radius: 50%;
+      background: #e8d8d4;
+      color: var(--accent-dark);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .final-section {
+      padding-top: 28px;
+    }
+
+    .final-card {
+      padding: 50px;
+      border-radius: 22px;
+      background: #e9ded8;
+    }
+
+    .final-card h2 {
+      max-width: 680px;
+      margin: 0 0 14px;
+      font-size: clamp(31px, 4vw, 47px);
+      line-height: 1.08;
+      letter-spacing: -1.8px;
+    }
+
+    .final-card p {
+      max-width: 610px;
+      margin: 0 0 26px;
+      color: #5b5450;
+      font-size: 17px;
+    }
+
+    footer {
+      padding: 34px 0;
+      margin-top: 76px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .footer-content {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-    }
-
-    .logo {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: -0.4px;
-    }
-
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    main {
-      padding: 84px 0 64px;
-    }
-
-    .hero {
-      max-width: 760px;
-      margin-bottom: 72px;
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      font-size: 14px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    h1 {
-      font-size: clamp(38px, 6vw, 64px);
-      line-height: 1.08;
-      letter-spacing: -2px;
-      margin: 14px 0 24px;
-    }
-
-    h2 {
-      font-size: 30px;
-      letter-spacing: -0.8px;
-      margin: 0 0 24px;
-    }
-
-    p {
       color: var(--muted);
-      font-size: 17px;
-      margin: 0 0 18px;
+      font-size: 13px;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-bottom: 72px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 25px;
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 18px;
-    }
-
-    .card p {
-      margin: 0;
-      font-size: 15px;
-    }
-
-    .notice {
-      background: #fff;
-      border-left: 4px solid var(--accent);
-      padding: 25px;
-      border-radius: 8px;
-      margin-bottom: 64px;
-    }
-
-    .notice p:last-child {
-      margin-bottom: 0;
-    }
-
-    footer {
-      border-top: 1px solid var(--border);
-      background: #fff;
-      padding: 28px 0;
-    }
-
-    footer .container {
+    .footer-links {
       display: flex;
-      justify-content: space-between;
-      gap: 20px;
       flex-wrap: wrap;
-      color: var(--muted);
-      font-size: 14px;
+      gap: 18px;
+      font-weight: 700;
     }
 
-    footer a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
+    .footer-links a:hover {
+      color: var(--accent);
     }
 
-    @media (max-width: 720px) {
-      nav { align-items: flex-start; padding: 18px 0; flex-direction: column; }
-      .grid { grid-template-columns: 1fr; }
-      main { padding-top: 56px; }
+    @media (max-width: 850px) {
+      .hero,
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero {
+        padding-top: 68px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .navigation {
+        min-height: 70px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero-panel,
+      .final-card {
+        padding: 25px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        align-items: flex-start;
+        flex-direction: column;
+      }
     }
   </style>
 </head>
+
 <body>
   <header>
-    <div class="container">
-      <nav>
-        <div class="logo">Studio Écho Social</div>
-        <a href="privacy.html">Politique de confidentialité</a>
+    <div class="container navigation">
+      <a class="brand" href="#accueil">
+        <span class="brand-mark">e</span>
+        <span>Studio Écho Social</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="#fonctionnement">Fonctionnement</a>
+        <a href="#principes">Principes</a>
+        <a href="privacy.html">Confidentialité</a>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero">
-      <div class="eyebrow">Gestion de contenu digital</div>
-      <h1>Une organisation plus claire pour les contenus numériques.</h1>
-      <p>
-        Studio Écho Social est un outil privé de préparation, d’organisation
-        et de gestion manuelle de contenu digital destiné à son propriétaire.
-      </p>
+  <main id="accueil">
+    <section class="container hero">
+      <div>
+        <div class="eyebrow">Organisation de contenu digital</div>
+
+        <h1>Une gestion de contenu plus claire, structurée et maîtrisée.</h1>
+
+        <p>
+          Studio Écho Social est un outil privé dédié à la préparation,
+          l’organisation et la gestion manuelle de contenus digitaux.
+          Chaque action reste contrôlée par le propriétaire du compte.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#fonctionnement">Découvrir le fonctionnement</a>
+          <a class="button button-secondary" href="privacy.html">Politique de confidentialité</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel" aria-label="Aperçu du flux de travail">
+        <div class="panel-top">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+
+        <div class="panel-label">Flux de contenu</div>
+        <div class="panel-title">Préparer, vérifier, publier avec contrôle.</div>
+
+        <div class="panel-line"></div>
+        <div class="panel-line short"></div>
+        <div class="panel-line"></div>
+
+        <div class="panel-status">
+          <span class="status-dot"></span>
+          Validation manuelle requise
+        </div>
+      </aside>
     </section>
 
-    <section class="grid">
-      <article class="card">
-        <h3>Organisation</h3>
-        <p>Préparation des idées, contenus, visuels, titres, descriptions et liens.</p>
-      </article>
+    <section class="container">
+      <div class="section-heading">
+        <h2>Un cadre simple pour mieux organiser les contenus.</h2>
+        <p>
+          L’objectif est de structurer les éléments nécessaires à chaque publication
+          sans multiplier les outils ni automatiser des actions non validées.
+        </p>
+      </div>
 
-      <article class="card">
-        <h3>Planification</h3>
-        <p>Structuration des publications et des priorités de communication.</p>
-      </article>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-number">01</div>
+          <h3>Organisation</h3>
+          <p>Préparation des visuels, titres, descriptions, liens et informations utiles à chaque contenu.</p>
+        </article>
 
-      <article class="card">
-        <h3>Validation manuelle</h3>
-        <p>Chaque action de publication reste contrôlée et validée par le propriétaire.</p>
-      </article>
+        <article class="feature-card">
+          <div class="feature-number">02</div>
+          <h3>Planification</h3>
+          <p>Structuration des idées, priorités éditoriales et contenus à préparer selon un rythme défini.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-number">03</div>
+          <h3>Contrôle</h3>
+          <p>Chaque contenu reste vérifié et validé avant toute action de publication.</p>
+        </article>
+      </div>
     </section>
 
-    <section class="notice">
-      <h2>Utilisation responsable</h2>
-      <p>Le site ne propose aucun compte public, profil utilisateur, fil d’actualité, système de publication publique, commentaire, abonnement, messagerie ou fonctionnalité communautaire.</p>
-      <p>Il ne constitue pas un réseau social.</p>
+    <section id="fonctionnement" class="workflow">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Un flux de travail en quatre étapes.</h2>
+          <p>Une méthode volontairement simple, pensée pour garder une vision claire sur chaque contenu.</p>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">ÉTAPE 01</div>
+            <h3>Structurer</h3>
+            <p>Réunir les informations, les idées et les éléments nécessaires à la préparation.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">ÉTAPE 02</div>
+            <h3>Préparer</h3>
+            <p>Organiser les textes, visuels, descriptions et liens dans un ordre clair.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">ÉTAPE 03</div>
+            <h3>Vérifier</h3>
+            <p>Contrôler les informations avant toute utilisation ou publication.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">ÉTAPE 04</div>
+            <h3>Valider</h3>
+            <p>Conserver une décision manuelle et explicite pour chaque action finale.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="principes" class="container">
+      <div class="trust-grid">
+        <div class="section-heading">
+          <h2>Une utilisation responsable par conception.</h2>
+          <p>
+            Studio Écho Social est conçu comme un environnement privé de gestion de contenu,
+            sans composante communautaire ni profil public.
+          </p>
+        </div>
+
+        <div>
+          <div class="trust-card">
+            <p>
+              Le site ne constitue pas un réseau social. Il ne propose ni fil d’actualité,
+              ni système de commentaires, ni abonnements, ni profils publics.
+            </p>
+          </div>
+
+          <div class="trust-list" style="margin-top: 24px;">
+            <div><span class="check">✓</span><span>Aucune publication publique par les visiteurs.</span></div>
+            <div><span class="check">✓</span><span>Aucun système de followers, likes ou messagerie.</span></div>
+            <div><span class="check">✓</span><span>Aucune collecte de mots de passe de services tiers.</span></div>
+            <div><span class="check">✓</span><span>Aucune action automatisée sans validation explicite.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container final-section">
+      <div class="final-card">
+        <h2>Une présence digitale mieux préparée, sans perdre le contrôle.</h2>
+        <p>
+          Studio Écho Social centralise une méthode de travail simple :
+          organiser les contenus, les vérifier, puis décider de chaque publication.
+        </p>
+        <a class="button button-primary" href="privacy.html">Consulter la politique de confidentialité</a>
+      </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
+    <div class="container footer-content">
       <span>© 2026 Studio Écho Social</span>
-      <a href="privacy.html">Politique de confidentialité</a>
+
+      <div class="footer-links">
+        <a href="#fonctionnement">Fonctionnement</a>
+        <a href="#principes">Principes</a>
+        <a href="privacy.html">Politique de confidentialité</a>
+      </div>
     </div>
   </footer>
 </body>
